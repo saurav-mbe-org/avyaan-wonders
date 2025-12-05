@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avyaan Daily Wonders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for larger touch targets and mobile-friendly inputs */
+        input[type="checkbox"], input[type="radio"] {
+            transform: scale(1.5); /* Make checkboxes/radios larger */
+        }
+        /* Style for the slider to make it easier to grab */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: #d1d5db;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #10b981; /* Emerald green */
+            cursor: pointer;
+        }
+        /* Sticky footer adjustments */
+        #content-area {
+            padding-bottom: 100px; /* Space for the sticky footer */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <header class="sticky top-0 z-10 bg-white shadow-md p-4 flex justify-between items-center border-b-4 border-emerald-500">
+        <h1 class="text-xl font-bold text-gray-800">Avyaan Daily Wonders</h1>
+        <div id="current-date-display" class="text-md font-medium text-emerald-600"></div>
+    </header>
+
+    <div id="content-area" class="p-4 sm:p-6 max-w-lg mx-auto">
+        
+        <form id="wonder-report-form" class="space-y-4">
+            <input type="hidden" id="date" name="date" required>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <button type="button" class="accordion-header w-full text-left p-4 bg-emerald-100 hover:bg-emerald-200 font-semibold text-gray-700 flex justify-between items-center" data-module="module-i">
+                    <span>Module I: Independence & Motor Skills</span>
+                    <span class="indicator">+</span>
+                </button>
+                <div class="accordion-content p-4 space-y-4 hidden" id="module-i">
+                    
+                    <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-md">
+                        <input type="checkbox" id="socks_indep" name="socks_indep" class="text-emerald-600 focus:ring-emerald-500 rounded">
+                        <label for="socks_indep" class="text-gray-700 font-medium text-lg flex-grow">Wore Socks Independently (100%)?</label>
+                    </div>
+
+                    <label for="pants_level" class="block text-gray-700 font-medium">Pants Independence %: <span id="pants_level_value" class="font-bold text-emerald-600">50</span>%</label>
+                    <input type="range" id="pants_level" name="pants_level" min="0" max="100" step="1" value="50" class="w-full" required>
+                    <p class="text-sm text-gray-500 mt-1">0=Adult did it, 100=Solo</p>
+
+                    <label class="block text-gray-700 font-medium mb-2">Meal Tool:</label>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center space-x-2 text-lg">
+                            <input type="radio" name="meal_tool" value="Tools" class="text-emerald-600 focus:ring-emerald-500" required>
+                            <span>Tools</span>
+                        </label>
+                        <label class="flex items-center space-x-2 text-lg">
+                            <input type="radio" name="meal_tool" value="Hand" class="text-emerald-600 focus:ring-emerald-500">
+                            <span>Hand</span>
+                        </label>
+                        <label class="flex items-center space-x-2 text-lg">
+                            <input type="radio" name="meal_tool" value="Adult_Fed" class="text-emerald-600 focus:ring-emerald-500">
+                            <span>Adult_Fed</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label for="meal_duration_min" class="block text-gray-700 font-medium">Total Meal Duration (minutes):</label>
+                        <input type="number" id="meal_duration_min" name="meal_duration_min" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 25" required>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-md">
+                        <input type="checkbox" id="post_meal_clear" name="post_meal_clear" class="text-emerald-600 focus:ring-emerald-500 rounded">
+                        <label for="post_meal_clear" class="text-gray-700 font-medium text-lg flex-grow">Cleared Own Plate/Cup?</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <button type="button" class="accordion-header w-full text-left p-4 bg-emerald-100 hover:bg-emerald-200 font-semibold text-gray-700 flex justify-between items-center" data-module="module-ii">
+                    <span>Module II: Communication & Initiation</span>
+                    <span class="indicator">+</span>
+                </button>
+                <div class="accordion-content p-4 space-y-4 hidden" id="module-ii">
+                    
+                    <div>
+                        <label for="spontaneous_requests" class="block text-gray-700 font-medium">Count: Spontaneous Requests (e.g., 'Chai'):</label>
+                        <input type="number" id="spontaneous_requests" name="spontaneous_requests" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 5" required>
+                    </div>
+
+                    <div>
+                        <label for="new_phrases" class="block text-gray-700 font-medium">New/Scripted Words Today (e.g., 'Mummy go'):</label>
+                        <input type="text" id="new_phrases" name="new_phrases" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="List words/phrases">
+                    </div>
+
+                    <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-md">
+                        <input type="checkbox" id="declarative_point" name="declarative_point" class="text-emerald-600 focus:ring-emerald-500 rounded">
+                        <label for="declarative_point" class="text-gray-700 font-medium text-lg flex-grow">Pointed to Share Interest (e.g., 'Look!'):</label>
+                    </div>
+
+                    <div>
+                        <label for="toilet_initiation_attempts" class="block text-gray-700 font-medium">Count: Toilet Initiation Attempts (e.g., touched card):</label>
+                        <input type="number" id="toilet_initiation_attempts" name="toilet_initiation_attempts" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 2" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <button type="button" class="accordion-header w-full text-left p-4 bg-emerald-100 hover:bg-emerald-200 font-semibold text-gray-700 flex justify-between items-center" data-module="module-iii">
+                    <span>Module III: Regulation & Behavior</span>
+                    <span class="indicator">+</span>
+                </button>
+                <div class="accordion-content p-4 space-y-4 hidden" id="module-iii">
+                    
+                    <div>
+                        <label for="meltdown_level" class="block text-gray-700 font-medium">Meltdown Level:</label>
+                        <select id="meltdown_level" name="meltdown_level" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                            <option value="">Select Level</option>
+                            <option value="None">None</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Major">Major</option>
+                        </select>
+                    </div>
+
+                    <div id="meltdown-duration-group" class="hidden">
+                        <label for="meltdown_duration_min" class="block text-gray-700 font-medium">Time Lost to Meltdown (minutes):</label>
+                        <input type="number" id="meltdown_duration_min" name="meltdown_duration_min" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 15">
+                    </div>
+
+                    <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-md">
+                        <input type="checkbox" id="coping_used" name="coping_used" class="text-emerald-600 focus:ring-emerald-500 rounded">
+                        <label for="coping_used" class="text-gray-700 font-medium text-lg flex-grow">Used a Self-Soothing Strategy?</label>
+                    </div>
+
+                    <div>
+                        <label for="sensory_trigger" class="block text-gray-700 font-medium">Sensory Trigger:</label>
+                        <select id="sensory_trigger" name="sensory_trigger" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                            <option value="">Select Trigger</option>
+                            <option value="Loud Noise">Loud Noise</option>
+                            <option value="Transition">Transition</option>
+                            <option value="Crowds">Crowds</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <button type="button" class="accordion-header w-full text-left p-4 bg-emerald-100 hover:bg-emerald-200 font-semibold text-gray-700 flex justify-between items-center" data-module="module-iv">
+                    <span>Module IV: Environment & Context</span>
+                    <span class="indicator">+</span>
+                </button>
+                <div class="accordion-content p-4 space-y-4 hidden" id="module-iv">
+                    
+                    <label for="overall_compliance" class="block text-gray-700 font-medium">Overall Compliance/Prompt Dependency Score (1-10): <span id="overall_compliance_value" class="font-bold text-emerald-600">5</span></label>
+                    <input type="range" id="overall_compliance" name="overall_compliance" min="1" max="10" step="1" value="5" class="w-full" required>
+                    <p class="text-sm text-gray-500 mt-1">1=Low Dependency, 10=High Dependency</p>
+
+                    <div>
+                        <label for="sleep_quality" class="block text-gray-700 font-medium">Sleep Quality:</label>
+                        <select id="sleep_quality" name="sleep_quality" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                            <option value="">Select Quality</option>
+                            <option value="Good">Good</option>
+                            <option value="Restless">Restless</option>
+                            <option value="Delayed">Delayed</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="therapy_session" class="block text-gray-700 font-medium">Therapy Session:</label>
+                        <select id="therapy_session" name="therapy_session" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                            <option value="">Select Session</option>
+                            <option value="Speech">Speech</option>
+                            <option value="OT">OT</option>
+                            <option value="Behavior">Behavior</option>
+                            <option value="None">None</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="biggest_event_note" class="block text-gray-700 font-medium">Biggest Win or Challenge Note:</label>
+                        <textarea id="biggest_event_note" name="biggest_event_note" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="Details about the most significant event of the day."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="json-output-container" class="mt-8 pt-4 border-t border-gray-200 hidden">
+                <h3 class="text-lg font-bold mb-2 text-gray-800">Generated JSON Report</h3>
+                <textarea id="json-output" rows="10" readonly class="w-full p-3 border border-emerald-400 bg-emerald-50 rounded-md font-mono text-sm"></textarea>
+                <button type="button" id="copy-json-btn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-md mt-2 transition duration-150">
+                    Copy JSON to Clipboard
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <footer class="sticky bottom-0 z-10 bg-white shadow-2xl p-4 border-t-4 border-emerald-500">
+        <button id="generate-report-btn" type="submit" form="wonder-report-form" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl py-4 rounded-lg transition duration-150 shadow-lg active:scale-[.99]">
+            Generate Daily Wonder Report
+        </button>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('wonder-report-form');
+            const dateInput = document.getElementById('date');
+            const dateDisplay = document.getElementById('current-date-display');
+            const jsonOutput = document.getElementById('json-output');
+            const jsonOutputContainer = document.getElementById('json-output-container');
+            const copyJsonBtn = document.getElementById('copy-json-btn');
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            const meltdownLevelSelect = document.getElementById('meltdown_level');
+            const meltdownDurationGroup = document.getElementById('meltdown-duration-group');
+            const meltdownDurationInput = document.getElementById('meltdown_duration_min');
+
+            // --- 1. INITIALIZATION & DATE SETUP ---
+
+            // Function to format the date as YYYY-MM-DD
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0
+            const dd = String(today.getDate()).padStart(2, '0');
+            const currentDate = `${yyyy}-${mm}-${dd}`;
+            
+            dateInput.value = currentDate;
+            dateDisplay.textContent = currentDate;
+
+
+            // --- 2. LOCAL STORAGE PERSISTENCE ---
+
+            const STORAGE_KEY = 'adw_form_state';
+
+            // Load data from local storage
+            const loadState = () => {
+                const savedState = localStorage.getItem(STORAGE_KEY);
+                if (savedState) {
+                    const state = JSON.parse(savedState);
+                    Object.keys(state).forEach(key => {
+                        const element = form.elements[key];
+                        if (element) {
+                            const value = state[key];
+                            if (element.type === 'checkbox') {
+                                element.checked = value;
+                            } else if (element.type === 'radio') {
+                                const radio = form.querySelector(`input[name="${key}"][value="${value}"]`);
+                                if (radio) radio.checked = true;
+                            } else {
+                                element.value = value;
+                            }
+                        }
+                    });
+                    // Manually trigger updates for display values
+                    updateSliderDisplay('pants_level');
+                    updateSliderDisplay('overall_compliance');
+                    toggleMeltdownDuration();
+                }
+            };
+
+            // Save data to local storage
+            const saveState = () => {
+                const data = {};
+                Array.from(form.elements).forEach(element => {
+                    if (element.name && element.type !== 'submit' && element.type !== 'button') {
+                        if (element.type === 'checkbox') {
+                            data[element.name] = element.checked;
+                        } else if (element.type === 'radio' && element.checked) {
+                            data[element.name] = element.value;
+                        } else if (element.type !== 'radio') {
+                            data[element.name] = element.value;
+                        }
+                    }
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            };
+
+            form.addEventListener('input', saveState);
+
+
+            // --- 3. UI HELPER FUNCTIONS ---
+
+            // Accordion Toggle
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const contentId = header.getAttribute('data-module');
+                    const content = document.getElementById(contentId);
+                    const indicator = header.querySelector('.indicator');
+
+                    const isHidden = content.classList.contains('hidden');
+
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.add('hidden'));
+                    document.querySelectorAll('.accordion-header .indicator').forEach(i => i.textContent = '+');
+
+                    // Toggle the clicked one
+                    if (isHidden) {
+                        content.classList.remove('hidden');
+                        indicator.textContent = '–';
+                    } else {
+                        content.classList.add('hidden');
+                        indicator.textContent = '+';
+                    }
+                });
+            });
+
+            // Slider Value Display Update
+            const updateSliderDisplay = (id) => {
+                const slider = document.getElementById(id);
+                const valueSpan = document.getElementById(`${id}_value`);
+                if (slider && valueSpan) {
+                    valueSpan.textContent = slider.value;
+                }
+            };
+
+            // Attach listeners to sliders
+            document.getElementById('pants_level').addEventListener('input', () => updateSliderDisplay('pants_level'));
+            document.getElementById('overall_compliance').addEventListener('input', () => updateSliderDisplay('overall_compliance'));
+
+            // Initial setup for slider displays
+            updateSliderDisplay('pants_level');
+            updateSliderDisplay('overall_compliance');
+
+            // Conditional Field Logic (meltdown_duration_min)
+            const toggleMeltdownDuration = () => {
+                const level = meltdownLevelSelect.value;
+                if (level === 'Minor' || level === 'Major') {
+                    meltdownDurationGroup.classList.remove('hidden');
+                    meltdownDurationInput.setAttribute('required', 'required');
+                } else {
+                    meltdownDurationGroup.classList.add('hidden');
+                    meltdownDurationInput.removeAttribute('required');
+                    meltdownDurationInput.value = ''; // Clear value when hidden
+                }
+                saveState(); // Save state after potential clear
+            };
+            meltdownLevelSelect.addEventListener('change', toggleMeltdownDuration);
+
+
+            // --- 4. SUBMISSION & JSON GENERATION ---
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simple Validation Check
+                if (!form.checkValidity()) {
+                    alert('Please fill out all required fields marked with * before generating the report.');
+                    // Force a browser validation check to show missing fields
+                    form.reportValidity(); 
+                    return;
+                }
+
+                // 1. GATHER DATA
+                const data = {
+                    // Module I: Independence & Motor Skills
+                    date: dateInput.value,
+                    socks_indep: document.getElementById('socks_indep').checked,
+                    pants_level: parseInt(document.getElementById('pants_level').value),
+                    meal_tool: form.elements['meal_tool'].value,
+                    meal_duration_min: parseInt(document.getElementById('meal_duration_min').value),
+                    post_meal_clear: document.getElementById('post_meal_clear').checked,
+
+                    // Module II: Communication & Initiation
+                    spontaneous_requests: parseInt(document.getElementById('spontaneous_requests').value),
+                    new_phrases: document.getElementById('new_phrases').value || "",
+                    declarative_point: document.getElementById('declarative_point').checked,
+                    toilet_initiation_attempts: parseInt(document.getElementById('toilet_initiation_attempts').value),
+
+                    // Module III: Regulation & Behavior
+                    meltdown_level: document.getElementById('meltdown_level').value,
+                    meltdown_duration_min: document.getElementById('meltdown_duration_min').value === '' ? 0 : parseInt(document.getElementById('meltdown_duration_min').value),
+                    coping_used: document.getElementById('coping_used').checked,
+                    sensory_trigger: document.getElementById('sensory_trigger').value,
+
+                    // Module IV: Environment & Context
+                    overall_compliance: parseInt(document.getElementById('overall_compliance').value),
+                    sleep_quality: document.getElementById('sleep_quality').value,
+                    therapy_session: document.getElementById('therapy_session').value,
+                    biggest_event_note: document.getElementById('biggest_event_note').value || ""
+                };
+
+                // 2. GENERATE JSON
+                const finalJson = JSON.stringify(data, null, 2);
+
+                // 3. OUTPUT DISPLAY
+                jsonOutput.value = finalJson;
+                jsonOutputContainer.classList.remove('hidden');
+
+                // Scroll to the output for visibility
+                jsonOutputContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+
+
+            // --- 5. COPY TO CLIPBOARD LOGIC ---
+            copyJsonBtn.addEventListener('click', () => {
+                jsonOutput.select();
+                navigator.clipboard.writeText(jsonOutput.value)
+                    .then(() => {
+                        copyJsonBtn.textContent = 'Copied! ✅';
+                        setTimeout(() => {
+                            copyJsonBtn.textContent = 'Copy JSON to Clipboard';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Could not copy text: ', err);
+                        alert('Failed to copy. Please copy the text manually.');
+                    });
+            });
+
+            // --- FINAL SETUP ---
+            loadState(); // Load state after all listeners are attached
+            toggleMeltdownDuration(); // Ensure conditional field is correctly hidden/shown on load
+        });
+    </script>
+</body>
+</html>
