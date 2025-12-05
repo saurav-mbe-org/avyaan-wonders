@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avyaan Daily Wonders</title>
+    <title>Avyaan Daily Wonders (Summary Mode)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for larger touch targets and mobile-friendly inputs */
@@ -45,7 +44,7 @@
     <div id="content-area" class="p-4 sm:p-6 max-w-lg mx-auto">
         
         <form id="wonder-report-form" class="space-y-4">
-            <input type="hidden" id="date" name="date" required>
+            <input type="hidden" id="date" name="date"> 
 
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <button type="button" class="accordion-header w-full text-left p-4 bg-emerald-100 hover:bg-emerald-200 font-semibold text-gray-700 flex justify-between items-center" data-module="module-i">
@@ -60,13 +59,13 @@
                     </div>
 
                     <label for="pants_level" class="block text-gray-700 font-medium">Pants Independence %: <span id="pants_level_value" class="font-bold text-emerald-600">50</span>%</label>
-                    <input type="range" id="pants_level" name="pants_level" min="0" max="100" step="1" value="50" class="w-full" required>
+                    <input type="range" id="pants_level" name="pants_level" min="0" max="100" step="1" value="50" class="w-full">
                     <p class="text-sm text-gray-500 mt-1">0=Adult did it, 100=Solo</p>
 
                     <label class="block text-gray-700 font-medium mb-2">Meal Tool:</label>
                     <div class="flex space-x-4">
                         <label class="flex items-center space-x-2 text-lg">
-                            <input type="radio" name="meal_tool" value="Tools" class="text-emerald-600 focus:ring-emerald-500" required>
+                            <input type="radio" name="meal_tool" value="Tools" class="text-emerald-600 focus:ring-emerald-500">
                             <span>Tools</span>
                         </label>
                         <label class="flex items-center space-x-2 text-lg">
@@ -81,7 +80,7 @@
 
                     <div>
                         <label for="meal_duration_min" class="block text-gray-700 font-medium">Total Meal Duration (minutes):</label>
-                        <input type="number" id="meal_duration_min" name="meal_duration_min" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 25" required>
+                        <input type="number" id="meal_duration_min" name="meal_duration_min" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 25">
                     </div>
                     
                     <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-md">
@@ -100,7 +99,7 @@
                     
                     <div>
                         <label for="spontaneous_requests" class="block text-gray-700 font-medium">Count: Spontaneous Requests (e.g., 'Chai'):</label>
-                        <input type="number" id="spontaneous_requests" name="spontaneous_requests" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 5" required>
+                        <input type="number" id="spontaneous_requests" name="spontaneous_requests" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 5">
                     </div>
 
                     <div>
@@ -115,7 +114,7 @@
 
                     <div>
                         <label for="toilet_initiation_attempts" class="block text-gray-700 font-medium">Count: Toilet Initiation Attempts (e.g., touched card):</label>
-                        <input type="number" id="toilet_initiation_attempts" name="toilet_initiation_attempts" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 2" required>
+                        <input type="number" id="toilet_initiation_attempts" name="toilet_initiation_attempts" min="0" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" placeholder="e.g., 2">
                     </div>
                 </div>
             </div>
@@ -129,7 +128,7 @@
                     
                     <div>
                         <label for="meltdown_level" class="block text-gray-700 font-medium">Meltdown Level:</label>
-                        <select id="meltdown_level" name="meltdown_level" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                        <select id="meltdown_level" name="meltdown_level" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg">
                             <option value="">Select Level</option>
                             <option value="None">None</option>
                             <option value="Minor">Minor</option>
@@ -149,7 +148,7 @@
 
                     <div>
                         <label for="sensory_trigger" class="block text-gray-700 font-medium">Sensory Trigger:</label>
-                        <select id="sensory_trigger" name="sensory_trigger" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                        <select id="sensory_trigger" name="sensory_trigger" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg">
                             <option value="">Select Trigger</option>
                             <option value="Loud Noise">Loud Noise</option>
                             <option value="Transition">Transition</option>
@@ -168,12 +167,12 @@
                 <div class="accordion-content p-4 space-y-4 hidden" id="module-iv">
                     
                     <label for="overall_compliance" class="block text-gray-700 font-medium">Overall Compliance/Prompt Dependency Score (1-10): <span id="overall_compliance_value" class="font-bold text-emerald-600">5</span></label>
-                    <input type="range" id="overall_compliance" name="overall_compliance" min="1" max="10" step="1" value="5" class="w-full" required>
+                    <input type="range" id="overall_compliance" name="overall_compliance" min="1" max="10" step="1" value="5" class="w-full">
                     <p class="text-sm text-gray-500 mt-1">1=Low Dependency, 10=High Dependency</p>
 
                     <div>
                         <label for="sleep_quality" class="block text-gray-700 font-medium">Sleep Quality:</label>
-                        <select id="sleep_quality" name="sleep_quality" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                        <select id="sleep_quality" name="sleep_quality" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg">
                             <option value="">Select Quality</option>
                             <option value="Good">Good</option>
                             <option value="Restless">Restless</option>
@@ -183,7 +182,7 @@
 
                     <div>
                         <label for="therapy_session" class="block text-gray-700 font-medium">Therapy Session:</label>
-                        <select id="therapy_session" name="therapy_session" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg" required>
+                        <select id="therapy_session" name="therapy_session" class="w-full mt-1 p-3 border border-gray-300 rounded-md text-lg">
                             <option value="">Select Session</option>
                             <option value="Speech">Speech</option>
                             <option value="OT">OT</option>
@@ -198,20 +197,24 @@
                     </div>
                 </div>
             </div>
-
-            <div id="json-output-container" class="mt-8 pt-4 border-t border-gray-200 hidden">
-                <h3 class="text-lg font-bold mb-2 text-gray-800">Generated JSON Report</h3>
-                <textarea id="json-output" rows="10" readonly class="w-full p-3 border border-emerald-400 bg-emerald-50 rounded-md font-mono text-sm"></textarea>
-                <button type="button" id="copy-json-btn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-md mt-2 transition duration-150">
-                    Copy JSON to Clipboard
+            </form>
+        <div id="json-output-container" class="mt-8 pt-4 hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-gray-800">Generated Daily Summary</h3>
+                <button type="button" id="copy-json-btn-top" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold py-2 px-3 rounded-md transition duration-150">
+                    Copy Summary
                 </button>
             </div>
 
-        </form>
+            <textarea id="json-output" rows="15" readonly class="w-full p-3 border border-emerald-400 bg-emerald-50 rounded-md font-sans text-sm leading-relaxed"></textarea>
+            
+            <button type="button" id="back-to-form-btn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md mt-4 transition duration-150">
+                ← Back to Edit Form
+            </button>
+        </div>
+        </div>
 
-    </div>
-
-    <footer class="sticky bottom-0 z-10 bg-white shadow-2xl p-4 border-t-4 border-emerald-500">
+    <footer id="footer-button" class="sticky bottom-0 z-10 bg-white shadow-2xl p-4 border-t-4 border-emerald-500">
         <button id="generate-report-btn" type="submit" form="wonder-report-form" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl py-4 rounded-lg transition duration-150 shadow-lg active:scale-[.99]">
             Generate Daily Wonder Report
         </button>
@@ -219,23 +222,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- ELEMENT REFERENCES ---
             const form = document.getElementById('wonder-report-form');
             const dateInput = document.getElementById('date');
             const dateDisplay = document.getElementById('current-date-display');
             const jsonOutput = document.getElementById('json-output');
             const jsonOutputContainer = document.getElementById('json-output-container');
-            const copyJsonBtn = document.getElementById('copy-json-btn');
+            const generateReportBtn = document.getElementById('generate-report-btn');
+            const copyJsonBtnTop = document.getElementById('copy-json-btn-top');
+            const backToFormBtn = document.getElementById('back-to-form-btn');
+            const footerButton = document.getElementById('footer-button');
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             const meltdownLevelSelect = document.getElementById('meltdown_level');
             const meltdownDurationGroup = document.getElementById('meltdown-duration-group');
             const meltdownDurationInput = document.getElementById('meltdown_duration_min');
 
             // --- 1. INITIALIZATION & DATE SETUP ---
-
-            // Function to format the date as YYYY-MM-DD
             const today = new Date();
             const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
             const dd = String(today.getDate()).padStart(2, '0');
             const currentDate = `${yyyy}-${mm}-${dd}`;
             
@@ -243,11 +248,10 @@
             dateDisplay.textContent = currentDate;
 
 
-            // --- 2. LOCAL STORAGE PERSISTENCE ---
-
+            // --- 2. LOCAL STORAGE PERSISTENCE (Skipping full implementation details for brevity) ---
             const STORAGE_KEY = 'adw_form_state';
+            // ... (loadState and saveState functions remain the same) ...
 
-            // Load data from local storage
             const loadState = () => {
                 const savedState = localStorage.getItem(STORAGE_KEY);
                 if (savedState) {
@@ -266,23 +270,25 @@
                             }
                         }
                     });
-                    // Manually trigger updates for display values
                     updateSliderDisplay('pants_level');
                     updateSliderDisplay('overall_compliance');
                     toggleMeltdownDuration();
                 }
             };
 
-            // Save data to local storage
             const saveState = () => {
                 const data = {};
                 Array.from(form.elements).forEach(element => {
                     if (element.name && element.type !== 'submit' && element.type !== 'button') {
+                        if (element.type === 'radio' && !element.checked) {
+                            return; 
+                        }
+
                         if (element.type === 'checkbox') {
                             data[element.name] = element.checked;
-                        } else if (element.type === 'radio' && element.checked) {
+                        } else if (element.type === 'radio') {
                             data[element.name] = element.value;
-                        } else if (element.type !== 'radio') {
+                        } else {
                             data[element.name] = element.value;
                         }
                     }
@@ -291,24 +297,39 @@
             };
 
             form.addEventListener('input', saveState);
+            // --- End of Persistence Block ---
 
 
             // --- 3. UI HELPER FUNCTIONS ---
+            
+            // Function to handle switching between screens
+            const showReportScreen = () => {
+                form.classList.add('hidden');
+                footerButton.classList.add('hidden');
+                jsonOutputContainer.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
-            // Accordion Toggle
+            const showFormScreen = () => {
+                form.classList.remove('hidden');
+                footerButton.classList.remove('hidden');
+                jsonOutputContainer.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Accordion and Slider functions (remain the same)
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
+                    // ... (accordion logic) ...
                     const contentId = header.getAttribute('data-module');
                     const content = document.getElementById(contentId);
                     const indicator = header.querySelector('.indicator');
 
                     const isHidden = content.classList.contains('hidden');
 
-                    // Close all other accordions
                     document.querySelectorAll('.accordion-content').forEach(c => c.classList.add('hidden'));
                     document.querySelectorAll('.accordion-header .indicator').forEach(i => i.textContent = '+');
 
-                    // Toggle the clicked one
                     if (isHidden) {
                         content.classList.remove('hidden');
                         indicator.textContent = '–';
@@ -319,7 +340,6 @@
                 });
             });
 
-            // Slider Value Display Update
             const updateSliderDisplay = (id) => {
                 const slider = document.getElementById(id);
                 const valueSpan = document.getElementById(`${id}_value`);
@@ -328,103 +348,113 @@
                 }
             };
 
-            // Attach listeners to sliders
             document.getElementById('pants_level').addEventListener('input', () => updateSliderDisplay('pants_level'));
             document.getElementById('overall_compliance').addEventListener('input', () => updateSliderDisplay('overall_compliance'));
 
-            // Initial setup for slider displays
-            updateSliderDisplay('pants_level');
-            updateSliderDisplay('overall_compliance');
-
-            // Conditional Field Logic (meltdown_duration_min)
             const toggleMeltdownDuration = () => {
                 const level = meltdownLevelSelect.value;
                 if (level === 'Minor' || level === 'Major') {
                     meltdownDurationGroup.classList.remove('hidden');
-                    meltdownDurationInput.setAttribute('required', 'required');
                 } else {
                     meltdownDurationGroup.classList.add('hidden');
-                    meltdownDurationInput.removeAttribute('required');
-                    meltdownDurationInput.value = ''; // Clear value when hidden
+                    meltdownDurationInput.value = ''; 
                 }
-                saveState(); // Save state after potential clear
+                saveState(); 
             };
             meltdownLevelSelect.addEventListener('change', toggleMeltdownDuration);
 
 
-            // --- 4. SUBMISSION & JSON GENERATION ---
+            // --- 4. SUBMISSION & SUMMARY GENERATION (Updated for screen transition) ---
 
             form.addEventListener('submit', (e) => {
-                e.preventDefault();
+                e.preventDefault(); 
                 
-                // Simple Validation Check
-                if (!form.checkValidity()) {
-                    alert('Please fill out all required fields marked with * before generating the report.');
-                    // Force a browser validation check to show missing fields
-                    form.reportValidity(); 
-                    return;
-                }
-
-                // 1. GATHER DATA
+                // 1. GATHER RAW DATA (Same as previous version)
                 const data = {
-                    // Module I: Independence & Motor Skills
                     date: dateInput.value,
                     socks_indep: document.getElementById('socks_indep').checked,
-                    pants_level: parseInt(document.getElementById('pants_level').value),
-                    meal_tool: form.elements['meal_tool'].value,
-                    meal_duration_min: parseInt(document.getElementById('meal_duration_min').value),
+                    pants_level: parseInt(document.getElementById('pants_level').value || 0),
+                    meal_tool: form.elements['meal_tool'].value || 'N/A',
+                    meal_duration_min: parseInt(document.getElementById('meal_duration_min').value || 0),
                     post_meal_clear: document.getElementById('post_meal_clear').checked,
-
-                    // Module II: Communication & Initiation
-                    spontaneous_requests: parseInt(document.getElementById('spontaneous_requests').value),
-                    new_phrases: document.getElementById('new_phrases').value || "",
+                    spontaneous_requests: parseInt(document.getElementById('spontaneous_requests').value || 0),
+                    new_phrases: document.getElementById('new_phrases').value || "None.",
                     declarative_point: document.getElementById('declarative_point').checked,
-                    toilet_initiation_attempts: parseInt(document.getElementById('toilet_initiation_attempts').value),
-
-                    // Module III: Regulation & Behavior
-                    meltdown_level: document.getElementById('meltdown_level').value,
-                    meltdown_duration_min: document.getElementById('meltdown_duration_min').value === '' ? 0 : parseInt(document.getElementById('meltdown_duration_min').value),
+                    toilet_initiation_attempts: parseInt(document.getElementById('toilet_initiation_attempts').value || 0),
+                    meltdown_level: document.getElementById('meltdown_level').value || 'N/A',
+                    meltdown_duration_min: meltdownDurationInput.value ? parseInt(meltdownDurationInput.value) : 0,
                     coping_used: document.getElementById('coping_used').checked,
-                    sensory_trigger: document.getElementById('sensory_trigger').value,
-
-                    // Module IV: Environment & Context
-                    overall_compliance: parseInt(document.getElementById('overall_compliance').value),
-                    sleep_quality: document.getElementById('sleep_quality').value,
-                    therapy_session: document.getElementById('therapy_session').value,
-                    biggest_event_note: document.getElementById('biggest_event_note').value || ""
+                    sensory_trigger: document.getElementById('sensory_trigger').value || 'N/A',
+                    overall_compliance: parseInt(document.getElementById('overall_compliance').value || 5),
+                    sleep_quality: document.getElementById('sleep_quality').value || 'N/A',
+                    therapy_session: document.getElementById('therapy_session').value || 'N/A',
+                    biggest_event_note: document.getElementById('biggest_event_note').value || "No detailed note provided."
                 };
 
-                // 2. GENERATE JSON
-                const finalJson = JSON.stringify(data, null, 2);
+                // 2. GENERATE HUMAN-READABLE SUMMARY (Same as previous version)
+                let summary = `DAILY WONDER REPORT - ${data.date}\n\n`;
+                summary += `---------------------------------------------------\n`;
+                summary += `[I] INDEPENDENCE & MOTOR SKILLS\n`;
+                summary += ` - Socks Independence: ${data.socks_indep ? '100% - Solo' : 'Assisted/Did not attempt'}\n`;
+                summary += ` - Pants Independence: ${data.pants_level}% (Slider Score)\n`;
+                summary += ` - Meal Method/Duration: ${data.meal_tool} for ${data.meal_duration_min} min.\n`;
+                summary += ` - Post-Meal Clear: ${data.post_meal_clear ? 'Yes' : 'No'}\n\n`;
+                summary += `[II] COMMUNICATION & INITIATION\n`;
+                summary += ` - Spontaneous Requests: ${data.spontaneous_requests} count.\n`;
+                summary += ` - New/Scripted Phrases: ${data.new_phrases}\n`;
+                summary += ` - Declarative Pointing: ${data.declarative_point ? 'Yes (Pointed to share interest)' : 'No'}\n`;
+                summary += ` - Toilet Initiation Attempts: ${data.toilet_initiation_attempts} count.\n\n`;
+                summary += `[III] REGULATION & BEHAVIOR\n`;
+                summary += ` - Meltdown Level: ${data.meltdown_level}\n`;
+                if (data.meltdown_level !== 'None' && data.meltdown_duration_min > 0) {
+                    summary += ` - Time Lost to Meltdown: ${data.meltdown_duration_min} minutes.\n`;
+                } else if (data.meltdown_level !== 'None') {
+                    summary += ` - Time Lost to Meltdown: Not recorded or 0 minutes.\n`;
+                }
+                summary += ` - Coping Strategy Used: ${data.coping_used ? 'Yes' : 'No'}\n`;
+                summary += ` - Sensory Trigger: ${data.sensory_trigger}\n\n`;
+                summary += `[IV] ENVIRONMENT & CONTEXT\n`;
+                summary += ` - Overall Compliance Score: ${data.overall_compliance}/10\n`;
+                summary += ` - Sleep Quality: ${data.sleep_quality}\n`;
+                summary += ` - Therapy Session: ${data.therapy_session}\n`;
+                summary += `\n** Biggest Note (Win/Challenge) **\n`;
+                summary += `${data.biggest_event_note}\n`;
+                summary += `---------------------------------------------------\n`;
 
-                // 3. OUTPUT DISPLAY
-                jsonOutput.value = finalJson;
-                jsonOutputContainer.classList.remove('hidden');
 
-                // Scroll to the output for visibility
-                jsonOutputContainer.scrollIntoView({ behavior: 'smooth' });
+                // 3. OUTPUT DISPLAY & SCREEN TRANSITION
+                jsonOutput.value = summary;
+                showReportScreen(); 
             });
 
 
-            // --- 5. COPY TO CLIPBOARD LOGIC ---
-            copyJsonBtn.addEventListener('click', () => {
+            // --- 5. NAVIGATION & COPY LOGIC ---
+            
+            // Handle Back Button Click
+            backToFormBtn.addEventListener('click', showFormScreen);
+
+            // Function to handle copying the text
+            const copySummaryText = (buttonElement) => {
                 jsonOutput.select();
                 navigator.clipboard.writeText(jsonOutput.value)
                     .then(() => {
-                        copyJsonBtn.textContent = 'Copied! ✅';
+                        buttonElement.textContent = 'Copied! ✅';
                         setTimeout(() => {
-                            copyJsonBtn.textContent = 'Copy JSON to Clipboard';
+                            buttonElement.textContent = 'Copy Summary';
                         }, 2000);
                     })
                     .catch(err => {
                         console.error('Could not copy text: ', err);
                         alert('Failed to copy. Please copy the text manually.');
                     });
-            });
+            };
 
+            // Attach copy function to the new top-right button
+            copyJsonBtnTop.addEventListener('click', () => copySummaryText(copyJsonBtnTop));
+            
             // --- FINAL SETUP ---
-            loadState(); // Load state after all listeners are attached
-            toggleMeltdownDuration(); // Ensure conditional field is correctly hidden/shown on load
+            loadState(); 
+            toggleMeltdownDuration(); 
         });
     </script>
 </body>
